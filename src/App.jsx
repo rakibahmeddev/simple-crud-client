@@ -1,7 +1,10 @@
 import './App.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const handleSubmit = (e) => {
+
+
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -21,7 +24,7 @@ function App() {
     .then(data => {
       console.log(data);
       form.reset();
-      alert('User added successfully');
+      toast.success('User added successfully!');
     })
 
   };
@@ -65,6 +68,9 @@ function App() {
         </form>
         {/* form end  */}
       </div>
+
+            <Toaster />
+
     </div>
   );
 }
