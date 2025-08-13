@@ -1,12 +1,21 @@
 import './App.css';
 
 function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const user = { name, email };
+    console.log(user);
+  };
+
   return (
     <div className="w-6xl mx-auto h-screen ">
       <div className="flex flex-col justify-center py-6">
         <h2 className="text-4xl font-bold text-center mb-6">Simple CRUD</h2>
         {/* form start  */}
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="w-[400px] mx-auto flex flex-col justify-center gap-4">
             <div className="w-full">
               <label className="text-black/70" htmlFor="name">
@@ -15,6 +24,7 @@ function App() {
               <input
                 className="h-12 p-2 mt-2 w-full border border-gray-500/30 rounded outline-none focus:border-indigo-300"
                 type="text"
+                name="name"
                 required
               />
             </div>
@@ -25,6 +35,7 @@ function App() {
               <input
                 className="h-12 p-2 mt-2 w-full border border-gray-500/30 rounded outline-none focus:border-indigo-300"
                 type="email"
+                name="email"
                 required
               />
             </div>
