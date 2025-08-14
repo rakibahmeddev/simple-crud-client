@@ -1,4 +1,5 @@
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const User = ({ user }) => {
   const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
@@ -15,7 +16,16 @@ const User = ({ user }) => {
   };
 
   const handleDelete = (id) => {
-    console.log(`Delete user with ID: ${id}`);
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          toast.success('✅ User deleted successfully!');
+        }
+      });
   };
 
   return (
@@ -57,6 +67,8 @@ const User = ({ user }) => {
           Delete
         </button>
       </div>
+
+      <Toaster />
     </div>
   );
 };
