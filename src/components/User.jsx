@@ -14,6 +14,10 @@ const User = ({ user }) => {
     setTilt({ x: y * -threshold, y: x * threshold });
   };
 
+  const handleDelete = (id) => {
+    console.log(`Delete user with ID: ${id}`);
+  };
+
   return (
     <div
       className="rounded-xl shadow-xl overflow-hidden transition-transform duration-200 ease-out cursor-pointer max-w-80 bg-white flex flex-col items-center justify-center m-2 p-4"
@@ -46,6 +50,7 @@ const User = ({ user }) => {
           Edit
         </button>
         <button
+          onClick={() => handleDelete(user._id)}
           type="button"
           className="flex items-center gap-2.5 cursor-pointer border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/30 active:scale-95 transition"
         >
