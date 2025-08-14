@@ -31,9 +31,27 @@ const User = ({ user }) => {
       <h3 className="mt-3 px-4 pt-3 mb-1 text-lg font-semibold text-gray-800">
         {user.name}
       </h3>
-      <p className="text-sm text-center px-4 pb-6 text-gray-600 w-5/6">
+      <p className="text-sm text-center  px-4 pb-6 text-gray-600 ">
         Email: {user.email}
       </p>
+      <p className="text-sm text-center  px-4 pb-6 text-gray-600">
+        ID: {user._id}
+      </p>
+      {/* buttons  */}
+      <div className="flex gap-2 w-full justify-center">
+        <button
+          type="button"
+          className="flex items-center gap-2.5 border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-green-500 hover:bg-green-500/10 hover:border-green-500/30 active:scale-95 transition"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="flex items-center gap-2.5 cursor-pointer border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/30 active:scale-95 transition"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 };

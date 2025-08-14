@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './Layout/Root.jsx';
 import Home from './Pages/Home.jsx';
 import Users from './Pages/Users.jsx';
+import Contact from './Pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         element: <Users></Users>,
         loader: () => fetch('http://localhost:3000/users'),
       },
+      {path: '/contact', element: <Contact></Contact> },
     ],
   },
 ]);

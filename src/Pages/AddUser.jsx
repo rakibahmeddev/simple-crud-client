@@ -20,8 +20,10 @@ const AddUser = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        form.reset();
-        toast.success('User added successfully!');
+        if (data.insertedId) {
+          form.reset();
+          toast.success('User added successfully!');
+        }
       });
   };
 
