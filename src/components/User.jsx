@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-const User = ({ user }) => {
+const User = ({ user, handleDelete }) => {
   const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
 
   // Adjust the threshold value to control the tilt effect
@@ -15,18 +15,6 @@ const User = ({ user }) => {
     setTilt({ x: y * -threshold, y: x * threshold });
   };
 
-  const handleDelete = (id) => {
-    fetch(`http://localhost:3000/users/${id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          toast.success('✅ User deleted successfully!');
-        }
-      });
-  };
 
   return (
     <div
