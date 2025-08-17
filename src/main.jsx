@@ -8,6 +8,7 @@ import Root from './Layout/Root.jsx';
 import Home from './Pages/Home.jsx';
 import Users from './Pages/Users.jsx';
 import Contact from './Pages/Contact.jsx';
+import Update from './Pages/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
         element: <Users></Users>,
         loader: () => fetch('http://localhost:3000/users'),
       },
-      {path: '/contact', element: <Contact></Contact> },
+      {
+        path: '/update/:id',
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/users/${params.id}`),
+      },
+      { path: '/contact', element: <Contact></Contact> },
     ],
   },
 ]);

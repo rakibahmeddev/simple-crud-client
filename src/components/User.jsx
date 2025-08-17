@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
-const User = ({ user, handleDelete }) => {
-  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+const User = ({ user, handleDelete, handleEdit }) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   // Adjust the threshold value to control the tilt effect
   const threshold = 12;
@@ -14,7 +15,6 @@ const User = ({ user, handleDelete }) => {
     const y = (e.clientY - top) / height - 0.5;
     setTilt({ x: y * -threshold, y: x * threshold });
   };
-
 
   return (
     <div
@@ -41,12 +41,15 @@ const User = ({ user, handleDelete }) => {
       </p>
       {/* buttons  */}
       <div className="flex gap-2 w-full justify-center">
-        <button
-          type="button"
-          className="flex items-center gap-2.5 border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-green-500 hover:bg-green-500/10 hover:border-green-500/30 active:scale-95 transition"
-        >
-          Edit
-        </button>
+        <Link to={`/update/${user._id}`}>
+          <button
+            onClick={() => handleEdit(user._id)}
+            type="button"
+            className="flex items-center gap-2.5 border border-gray-500/30 px-4 py-2 text-sm text-gray-800 rounded bg-white hover:text-green-500 hover:bg-green-500/10 hover:border-green-500/30 active:scale-95 transition"
+          >
+            Edit
+          </button>
+        </Link>
         <button
           onClick={() => handleDelete(user._id)}
           type="button"

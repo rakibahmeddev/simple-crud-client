@@ -20,11 +20,16 @@ const Users = () => {
       });
   };
 
+  const handleEdit = (id) => {
+    console.log(`Edit user with ID: ${id}`);
+  }
+ 
+
   return (
     <div className='w-full max-w-6xl mx-auto p-6'>
       <h2 className='text-center text-3xl font-bold mt-6'>All Users: {users.length}</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4'>
-        {users.map((user) => <User key={user._id} user={user} handleDelete={handleDelete}></User>)}
+        {users.map((user) => <User key={user._id} user={user} handleDelete={handleDelete} handleEdit={handleEdit}></User>)}
       </div>
     </div>
   );
