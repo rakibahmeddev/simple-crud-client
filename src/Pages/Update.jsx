@@ -12,7 +12,24 @@ const Update = () => {
     const email = form.email.value;
     const user = { name, email };
     console.log(user);
-  };
+
+    fetch(`http://localhost:3000/users/${loadedUsers._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+  })
+  .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          alert('User updated successfully!');
+          form.reset();
+        }
+    })
+}
+
 
   return (
     <div>
